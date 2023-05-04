@@ -18,13 +18,17 @@ macro(trace_variable variable)
     endif()
 endmacro()
 
+message(STATUS "Line 21: varialble ${variable}")
+
 find_package (Threads)
 
 # Cannot call it DMC2_DIR since this is implicitly used by the find package.
 set(DMC2_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 trace_variable(DMC2_ROOT)
 
-  
+message(STATUS "Line 29: DMC2_ROOT ${DMC2_ROOT}")
+
+
 # Must be located in root dir, doesn't work in tests
 # if (DMC2_ENABLE_TESTS)
 #     enable_testing()
@@ -62,7 +66,10 @@ function(standard_flag standard result)
   endif()  
 endfunction()
 
+message(STATUS "line 69: standard ${standard}")
+
 macro(add_standard_flag standard)
+  message(STATUS "line 72: subdirectory call this... standard ${standard}")
   standard_flag(${standard} FLAG)
   add_definitions(${FLAG})
 endmacro()
@@ -94,6 +101,8 @@ endmacro (compile_all)
 
 message(STATUS "The Compiler is ${CMAKE_CXX_COMPILER} and its Id ${CMAKE_CXX_COMPILER_ID}.")
 
+# here in SubDirectory CMakeLists, call function and macro arg add_standard_flag
+# macro arg is like funciton...
 add_subdirectory(c++03)
 add_subdirectory(c++11)
 add_subdirectory(c++14)

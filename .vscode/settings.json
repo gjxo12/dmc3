@@ -1,0 +1,10 @@
+{
+    "cmake.configureSettings": {
+        // "CMAKE_CXX_STANDARD": "17",
+        // "CMAKE_BUILD_TYPE": "DEBUG",
+        "BUILD_SHARED_LIBS": false,
+        "cmake.generator": "Visual Studio 17 2022"
+    },
+    "cmake.buildDirectory": "${workspaceFolder}/build_VS",
+    "cmake.installPrefix": "${workspaceFolder}/install"
+}
