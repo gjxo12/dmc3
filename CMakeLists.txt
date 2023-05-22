@@ -83,11 +83,13 @@ endmacro()
 ### compiles all source files passed in, adds test if testing is true, prepends prefix to target
 macro (compile_all testing prefix)
     # cycle through the sources and create an executable for it
+    message(STATUS "check compile_all ${testing} ${prefix}")
+    # ARGN keyword... 
     foreach (source ${ARGN})
         get_filename_component (test ${source} NAME_WE)
         string(REPLACE " " ";" new_source ${source})
         set(test_name ${prefix}_${test})
-        # message(STATUS "Add test ${test_name} from source ${new_source}.")
+        message(STATUS "Add test ${test_name} from source ${new_source}.")
         add_executable (${test_name} ${new_source})
 	target_link_libraries (${test_name} ${CMAKE_THREAD_LIBS_INIT}) # some examples need thread support
         if (${testing} STREQUAL "true")
