@@ -120,5 +120,7 @@ if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	add_subdirectory(CMake_example)
 endif()
 
+add_subdirectory(usercode)
+
 # Maybe compile and test ode_solver at some point
 
