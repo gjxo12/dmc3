@@ -16,6 +16,8 @@ class vector
     //   : my_size(that.my_size), data(that.data) {}
 
     // We have to write the copy constructor and actually copy
+    // chapter2: 별칭 문제- 복사가 아닌 별칭이 되어 공유해버린다.. 포인터 변수일땐 명시적으로 해주자
+    // 그리고 포인터 변수일땐 원시 포인터보단 unique_ptr을 쓰자
     vector(const vector& that) 
       : my_size(that.my_size), data(new double[my_size])
     {

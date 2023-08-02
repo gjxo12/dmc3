@@ -19,4 +19,32 @@
   - 정적 메서드는 정적 데이터 맴버에서만 접근하고 호출할수 있다..
 
 - Constructor / Assignment
-  -  
+  - 초기화시 {} 로 해야 현대적, ()은 함수 호출을 연상
+```c++
+class A
+{
+public:
+    A() {};
+};
+class solver
+{
+public:
+    solver(int row, int col) : a{a} {} // 이렇게 객체를 바로 넘겨서 초기화 가능
+    solver(double r = 0, double i = 0) : num1{ r }, num2{ i }, a{ a } {}
+    solver(const solver& copy) : num1{ copy.num1 }, num2{ copy.num2 }, a{ a } {}
+private:
+    A& a; // 참조로 하면 반드시 생성자에서 초기화가 필요함
+    double num1;
+    double num2;
+};
+
+int main()
+{
+    solver z1;
+    solver z2();
+    solver z3{ 4 };
+    solver z4 = 4;
+    solver z5{ 0,1 };
+	return 0;
+}
+```

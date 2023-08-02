@@ -48,6 +48,7 @@ class vector
   private:
     int                         my_size;
     std::unique_ptr<double[]>   data;
+    // chapter2: 자동으로 복사 생성자를 생성 X 
 };
 
 std::ostream& operator<<(std::ostream& os, const vector& v)
