@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 class complex
 {
@@ -6,7 +7,7 @@ class complex
     complex(double r, double i) : r{r}, i{i} {}
     // complex(double r) : complex{r, 0.0} {}
     // complex() : complex{0.0} {}
-
+    // 다른 생성자를 호출하는것, 초기화에 공을 들인 곳에 효율적
     complex(double r) : r{r} {}
     complex() {}
 
@@ -113,11 +114,14 @@ struct something_else
     operator whatever() { return whatever(); }
 };
 
+double complex_abs(complex c){
+    return std::sqrt(real(c) * real(c) + imag(c) * imag(c));
+}
+
 int main()
 {
     complex c{7.0, 8}, c2= {0, 1}, c3= {9.3}, c4= {c};
     const complex cc= {c3};
-
     std::cout << "c = " << c << '\n';
     std::cout << "c2 = " << c2 << '\n';
     std::cout << "c3 = " << c3 << '\n';
@@ -128,6 +132,9 @@ int main()
 
     double r2= real(complex(3, 7)) * 2.0;
     std::cout << "r2 = " << r2 << '\n';
+
+    // complex_abs(7.0); // this is error.. in explicit constructor..
+    complex_abs(complex{7.0});
 
     return 0;
 }
