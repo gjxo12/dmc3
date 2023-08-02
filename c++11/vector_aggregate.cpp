@@ -139,6 +139,8 @@ int main (int argc, char* argv[])
 
 #endif
 
+    // double dd = dot(vector{3,4,5}, vector{7,8,9});
+    // 인수의 형식이 명확하면 아래처럼 사용가능
     double d= dot({3, 4, 5}, {7, 8, 9});
 
     return 0 ;

@@ -126,6 +126,7 @@ int main (int argc, char* argv[])
 
     sloppy_complex z1{3.66, 2.33},
 	           z2= {0, 1};
+    // aggregate initialzaion --> c++20으로하면 desinated initialization(균일초기화) 가능
     
 
 

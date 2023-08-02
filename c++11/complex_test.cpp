@@ -22,10 +22,11 @@ class complex
 	return *this;
     }
 
+    // 복사 배정: 암묵적 변환 - 명시적으로 정의하는게 좋다
     complex& operator= (double rn) 
     {
 	r= rn; i= 0.0;
-	return *this;
+	return *this; // this는 객체 자기 자신을 가리키는 포인터, 반환 타입 확인
     }
 
     // complex operator+(const complex& c2) const
@@ -56,6 +57,11 @@ class complex
     {
 	return {c1.r - c2.r, c1.i - c2.i};
     }
+
+    complex subtract(const complex& c1, const complex& c2){
+        return {c1.r - c2.r, c1.i - c2.i};
+    }
+
   private:
     double r= 0.0, i= 0.0;
 };
@@ -120,7 +126,7 @@ double complex_abs(complex c){
 
 int main()
 {
-    complex c{7.0, 8}, c2= {0, 1}, c3= {9.3}, c4= {c};
+    complex c{7.0, 8}, c2= {0, 1}, c3= {9.3}, c4= {c}; // aggregate initialzation
     const complex cc= {c3};
     std::cout << "c = " << c << '\n';
     std::cout << "c2 = " << c2 << '\n';
@@ -135,6 +141,9 @@ int main()
 
     // complex_abs(7.0); // this is error.. in explicit constructor..
     complex_abs(complex{7.0});
+
+    std::cout << c.subtract(c2,c3) << "\n";
+    // 이같이 함수의 반환값으로 균일 초기화 사용 가능..
 
     return 0;
 }
