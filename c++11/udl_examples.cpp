@@ -39,7 +39,7 @@ namespace tst {
 	double l;
     };
 
-
+    // 사용자 정의 리터럴을 사용할때 operator"" 을 사용한다...
     length operator"" _m(long double l)
     {
 	return length(l);
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 {
     using namespace tst;
     // using tst::operator"" _nm;
-    
+    // 접미사는 반드시 밑줄 하나로 시작하게끔 지킨다..
     length len1{13.5};
     length len2{14.2_km};
     length len3= 14.2_km;
